@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-word_first = "object-oriented"
-word_last = "with Python"
-word_middle = "programming"
-sentence = f"{word_first} {word_middle} {word_last}"
-print(sentence)
+str = "Python is an interpreted, interactive, object-oriented programming\
+ language that combines remarkable power with very clear syntax"
+# concatenate slices of str to build the new sentence
+print(str[39:66] + str[106:112] + str[0:6])
