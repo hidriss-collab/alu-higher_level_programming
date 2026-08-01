@@ -1,5 +1,5 @@
 #!/bin/bash
-# Sends POST parameters
+# Sends a POST request with email and subject parameters
 curl -sX POST \
 -d "email=test@gmail.com" \
 -d "subject=I will always be here for PLD" \
