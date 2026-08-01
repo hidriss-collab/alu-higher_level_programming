@@ -1,3 +1,4 @@
+-- Lists all Comedy shows
 SELECT tv_shows.title
 FROM tv_shows
 INNER JOIN tv_show_genres
