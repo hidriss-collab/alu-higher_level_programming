@@ -1,3 +1,3 @@
-splays the body of a 200 response
-# Displays the body of the response
+#!/bin/bash
+# Displays the body of the response for a 200 status code
 curl -sL "$1"
