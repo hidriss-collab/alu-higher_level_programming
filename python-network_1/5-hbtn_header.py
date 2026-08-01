@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""Displays X-Request-Id using requests"""
-
-import sys
+"""Script that displays the X-Request-Id header value using requests."""
 import requests
+import sys
 
-response = requests.get(sys.argv[1])
-print(response.headers.get("X-Request-Id"))
+
+if __name__ == "__main__":
+    r = requests.get(sys.argv[1])
+    print(r.headers.get("X-Request-Id"))

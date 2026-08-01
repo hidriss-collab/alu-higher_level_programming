@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""POST email using requests"""
-
-import sys
+"""Script that sends a POST request with an email using requests."""
 import requests
+import sys
 
-response = requests.post(sys.argv[1], data={"email": sys.argv[2]})
-print(response.text)
+
+if __name__ == "__main__":
+    r = requests.post(sys.argv[1], data={"email": sys.argv[2]})
+    print(r.text)

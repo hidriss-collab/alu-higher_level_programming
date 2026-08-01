@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""Displays GitHub user ID"""
-
-import sys
+"""Script that displays your GitHub id using Basic Authentication."""
 import requests
+import sys
 
-response = requests.get(
-    "https://api.github.com/user",
-    auth=(sys.argv[1], sys.argv[2])
-)
 
-data = response.json()
-print(data.get("id"))
+if __name__ == "__main__":
+    url = "https://api.github.com/user"
+    r = requests.get(url, auth=(sys.argv[1], sys.argv[2]))
+    try:
+        print(r.json().get("id"))
+    except ValueError:
+        print("None")
