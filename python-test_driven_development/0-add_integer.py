@@ -3,14 +3,16 @@
 
 
 def add_integer(a, b=98):
-    """Return the addition of two integers.
+    """Add two integers.
 
     Args:
-        a: The first integer.
-        b: The second integer (default is 98).
+        a: The first integer or float.
+        b: The second integer or float. Defaults to 98.
 
     Raises:
         TypeError: If a or b is not an integer or float.
+        OverflowError: If a or b is infinity.
+        ValueError: If a or b is NaN.
 
     Returns:
         The sum of a and b as an integer.
@@ -23,6 +25,5 @@ def add_integer(a, b=98):
 
     a = int(a)
     b = int(b)
-
 
     return a + b
