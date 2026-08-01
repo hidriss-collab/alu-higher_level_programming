@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module that defines the Base class."""
 import json
+import csv
 
 
 class Base:
@@ -64,5 +65,40 @@ class Base:
             with open(filename, "r") as f:
                 list_dicts = cls.from_json_string(f.read())
             return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialize list_objs to a CSV file <Class name>.csv."""
+        filename = "{}.csv".format(cls.__name__)
+        if list_objs is None:
+            list_objs = []
+        with open(filename, "w", newline="") as f:
+            writer = csv.writer(f)
+            if cls.__name__ == "Rectangle":
+                fields = ["id", "width", "height", "x", "y"]
+            else:
+                fields = ["id", "size", "x", "y"]
+            for obj in list_objs:
+                d = obj.to_dictionary()
+                writer.writerow([d[key] for key in fields])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserialize instances from a CSV file <Class name>.csv."""
+        filename = "{}.csv".format(cls.__name__)
+        try:
+            with open(filename, "r", newline="") as f:
+                reader = csv.reader(f)
+                if cls.__name__ == "Rectangle":
+                    fields = ["id", "width", "height", "x", "y"]
+                else:
+                    fields = ["id", "size", "x", "y"]
+                instances = []
+                for row in reader:
+                    d = {fields[i]: int(row[i]) for i in range(len(fields))}
+                    instances.append(cls.create(**d))
+            return instances
         except FileNotFoundError:
             return []
