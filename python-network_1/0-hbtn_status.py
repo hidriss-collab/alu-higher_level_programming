@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Fetches ALU intranet status using urllib"""
+"""
+Fetches the status from the ALU intranet using urllib.
+"""
 
 import urllib.request
 
