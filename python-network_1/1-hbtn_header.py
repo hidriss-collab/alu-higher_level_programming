@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""Displays the X-Request-Id header"""
-
-import sys
+"""Script that displays the X-Request-Id header value of a URL."""
 import urllib.request
+import sys
 
-with urllib.request.urlopen(sys.argv[1]) as response:
-    print(response.headers.get("X-Request-Id"))
+
+if __name__ == "__main__":
+    with urllib.request.urlopen(sys.argv[1]) as response:
+        print(response.headers.get("X-Request-Id"))

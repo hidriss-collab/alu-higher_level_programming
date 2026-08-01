@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""Handles HTTP errors using requests"""
-
-import sys
+"""Script that displays the body of a response or the error code."""
 import requests
+import sys
 
-response = requests.get(sys.argv[1])
 
-if response.status_code >= 400:
-    print("Error code: {}".format(response.status_code))
-else:
-    print(response.text)
+if __name__ == "__main__":
+    r = requests.get(sys.argv[1])
+    if r.status_code >= 400:
+        print("Error code: {}".format(r.status_code))
+    else:
+        print(r.text)
