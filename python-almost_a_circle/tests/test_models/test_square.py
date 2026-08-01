@@ -9,6 +9,12 @@ from models.rectangle import Rectangle
 class TestSquare(unittest.TestCase):
     """Tests for Square"""
 
+    def tearDown(self):
+        """Remove created files after each test"""
+        for f in ("Square.json", "Rectangle.json"):
+            if os.path.exists(f):
+                os.remove(f)
+
     def test_one_arg(self):
         s = Square(1)
         self.assertEqual(s.size, 1)
